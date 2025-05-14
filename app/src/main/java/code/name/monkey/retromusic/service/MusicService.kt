@@ -204,6 +204,24 @@ class MusicService : MediaBrowserServiceCompat(),
             }
         }
     }
+private lateinit var btAudioReceiver: BTAudioStateReceiver
+
+override fun onCreate() {
+    super.onCreate()
+
+    val am = getSystemService(AUDIO_SERVICE) as AudioManager
+    btAudioReceiver = BTAudioStateReceiver().apply {
+        setAudioManager(am)
+    }
+
+    val filter = IntentFilter(BluetoothHeadset.ACTION_AUDIO_STATE_CHANGED)
+    registerReceiver(btAudioReceiver, filter)
+}
+
+override fun onDestroy() {
+    super.onDestroy()
+    unregisterReceiver(btAudioReceiver)
+}
 
     private val lockScreenReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
