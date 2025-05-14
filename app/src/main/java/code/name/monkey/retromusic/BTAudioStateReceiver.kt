@@ -1,5 +1,3 @@
-// 文件路径: app/src/main/java/code/name/monkey/retromusic/BTAudioStateReceiver.kt
-
 package code.name.monkey.retromusic
 
 import android.bluetooth.BluetoothHeadset
