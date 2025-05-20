@@ -23,7 +23,7 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
-      # 3. 缓存 Gradle
+      # 3.  Gradle
       - name: Cache Gradle
         uses: actions/cache@v3
         with:
